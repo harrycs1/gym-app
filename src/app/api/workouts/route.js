@@ -66,15 +66,11 @@ async function getWorkoutsByCreatorId(creator_id) {
 async function POST(request) {
     const body = await request.json();
     const { workout_name, creator_id } = body;
-    console.log(typeof workout_name, typeof creator_id)
 
     try {
-        console.log('Entrance')
         if (!workout_name.length || !creator_id) {
-            console.log('h1llo')
             return NextResponse.json('Missing Data', {status: 400})
         }
-        console.log('No missing Data')
 
         const workout = await prisma.workouts.findMany({
             where: {
@@ -89,13 +85,9 @@ async function POST(request) {
             }
         })
 
-        console.log('after check before condition')
-
         if(workout.length){
             return NextResponse.json('Already Added To Workouts', {status: 400})
         }
-
-        console.log('No Previos Data')
 
         const newWorkout = await prisma.workouts.create({
             data: {
@@ -103,8 +95,6 @@ async function POST(request) {
                 creator_id
             }
         })
-
-        console.log(newWorkout)
 
         return NextResponse.json({newWorkout}, {status: 201})
 

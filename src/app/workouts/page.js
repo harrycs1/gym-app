@@ -1,12 +1,12 @@
 "use client";
 
-import { Title } from "../components/General/Title";
 import { LoadingSkeleton } from "@/app/components/General/LoadingSkeleton";
 import { useEffect, useState } from "react";
 import WorkoutCard from "../components/workouts/WorkoutCard";
 import { ErrorPage } from '@/app/components/General/ErrorPage';
 import { useUserContext } from "@/app/contexts/userContext";
 import styles from "../style";
+import Link from "next/link";
 
 export default function WorkoutsPage() {
   const { user, setUser } = useUserContext();
@@ -96,30 +96,38 @@ export default function WorkoutsPage() {
   return (
     <section className={`flex justify-center`}>
       <div className={`${styles.bodySection}`}>
-        <h1 className={`${styles.title}`}>My Workouts</h1>
-        {isLoading ? <LoadingSkeleton/> : null}
-        <ul>
-          {!workouts.length ? <p className="my-10 text-xl text-LightPurple">Get started!</p> : null}
-          {workouts.map((workout) => {
-            return (
-              <li key={workout.workout_id}>
-                <WorkoutCard workout={workout} setWorkouts={setWorkouts} setIsDeleted={setIsDeleted} canDelete={true}/>
-              </li>
-            )
-          })}
-        </ul>
-        {isDeleted ? <p>Workout deleted.</p>: null}
-        {isWorkoutError ? <p>{isWorkoutError}</p> : null}
-        <div className={`rounded-lg p-3 mt-2 w-fit text-platinum bg-DeepPurple overflow-hidden flex-column`}>
-          <button 
-            onClick={handleToggleForm}
-          >Create new workout</button>
-          <form onSubmit={handleSubmitForm} className={`${inputIsHidden} flex mt-3 border rounded-xl overflow-hidden`}>
-            <input value={workoutName} onChange={handleNameInput} placeholder="Workout name" className="py-1 px-2 w-[80%] h-9 text-DeepPurple"></input>
-            <button className={`px-2 py-1 w-fit text-platinum bg-DeepPurple`}>Submit</button>
-          </form>
+      <h1 className={`${styles.title}`}>My Workouts</h1>
+        <div className={`pt-5 pb-10 flex flex-col justify-start`}>
+          <div className=" w-full mb-5 text-center">
+            <ul>
+            {isLoading ? <LoadingSkeleton/> : !workouts.length ? <p className="my-10 text-4xl pt-20 mt-10 text-LightPurple">Get started.</p> : null}
+              {workouts.map((workout) => {
+                return (
+                  <li key={workout.workout_id}>
+                    <WorkoutCard workout={workout} setWorkouts={setWorkouts} setIsDeleted={setIsDeleted} canDelete={true}/>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+          {isDeleted ? <p>Workout deleted.</p>: null}
+          {isWorkoutError ? <p>{isWorkoutError}</p> : null}
+          <div className={` flex gap-4 w-full ${!workouts.length ? `justify-center` : `justify-start`}`}>
+            <div>
+              <Link href="/browse">
+                <button className={`${styles.button}`}>Browse</button>
+              </Link>
+            </div>
+            <div className={`rounded-lg p-3 mt-2 w-fit text-platinum bg-DeepPurple overflow-hidden flex-column`}>
+              <button onClick={handleToggleForm}>Create</button>
+              <form onSubmit={handleSubmitForm} className={`${inputIsHidden} flex mt-3 border rounded-xl overflow-hidden`}>
+                <input value={workoutName} onChange={handleNameInput} placeholder="Workout name" className="py-1 px-2 w-[80%] h-9 text-DeepPurple"></input>
+                <button className={`px-2 py-1 w-fit text-platinum bg-DeepPurple`}>Submit</button>
+              </form>
+            </div>
+          </div>
+          {isError ? <p>Problem loading workouts. Please try again.</p> : null}
         </div>
-        {isError ? <p>Problem loading workouts. Please try again.</p> : null}
       </div>
     </section>
   );

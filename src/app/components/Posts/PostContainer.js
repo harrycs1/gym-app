@@ -31,7 +31,7 @@ export const PostContainer = ({ post, isNotLastChild }) => {
         setComments(commentsData);
         setSessionSets(
           loggedWorkoutsData
-            .filter((set) => set.session_id === post.session_id)
+            .filter((set) => set.session_id === post.session_id) 
             .sort((a, b) => a.exercise_id - b.exercise_id)
         );
         setExerciseObj(exerciseData)
@@ -74,18 +74,18 @@ export const PostContainer = ({ post, isNotLastChild }) => {
       body: newComment,
       user_id: user.user_id,
       completed_at: getCurrentTimestamp(),
-    };
-    setComments((prevVals) => [...prevVals, commentData]);
-    axios.post("/api/comments", commentData).then((res) => {
-      setNewComments("");
-    });
+    }
+    axios.post('/api/comments', commentData).then((res)=>{
+      setNewComments('')
+    })
+    setComments((prevVals) => [...prevVals, commentData])
   }
 
   return (
     <div className="mb-5 min-w-[80%] max-w-[500px] ">
       <div className="flex items-center mb-3">
         <div className="w-11 h-11 rounded-full overflow-hidden">
-          <img src="/image.png"></img>
+          <img src={postUser.image_url}></img>
         </div>
         <div className="ml-3 opacity-50 text-sm text-DeepPurple">
           <Link href={`/profile/${postUser.username}`} className="flex w-fit">

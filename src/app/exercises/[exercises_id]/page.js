@@ -41,7 +41,7 @@ export default function SingleExercisePage({params}) {
         const fetchData = async () => {
             
             fetchExercise();
-            fetchSessions();
+            user.user_id ? fetchSessions() : null;
         }
 
         fetchData()
@@ -62,6 +62,7 @@ export default function SingleExercisePage({params}) {
             <ExerciseChart data={currentExerciseData} exerciseName={currentExercise.name}></ExerciseChart>
             <h2 className={`${styles.subtitle} mt-5`}>History:</h2>
             <ul className="mb-5">
+                {currentExerciseData.length ? null : <p>No exercise history... yet.</p>}
                 {currentExerciseData.map((data)=>{
                     return (
                         <li key={data.logged_id}>

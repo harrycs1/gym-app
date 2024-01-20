@@ -174,6 +174,86 @@ module.exports = [
       "equipment": "cable machine",
       "difficulty": "intermediate",
       "instructions": "Sit at a cable machine with a V-bar attachment. Pull the handle towards your lower chest, squeezing your lats. Return the handle to the starting position in a controlled manner."
+    },
+    {
+      "name": "Back Squat",
+      "type": "strength",
+      "muscle": "quadriceps",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "instructions": "Place a barbell across your upper back. Stand with your feet shoulder-width apart. Lower your body by bending your knees, keeping your back straight. Push through your heels to return to the starting position."
+    },
+    {
+      "name": "Leg Press",
+      "type": "strength",
+      "muscle": "quadriceps",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "instructions": "Sit on a leg press machine with your feet on the platform. Push the platform away by extending your knees. Bend your knees to lower the platform back towards you. Keep your back against the seat throughout the exercise."
+    },
+    {
+      "name": "Lunges",
+      "type": "strength",
+      "muscle": "quadriceps",
+      "equipment": "bodyweight or dumbbells",
+      "difficulty": "intermediate",
+      "instructions": "Stand with your feet together. Take a step forward with one foot and lower your body until both knees are bent at a 90-degree angle. Push off the front foot to return to the starting position. Repeat on the other leg."
+    },
+    {
+      "name": "Deadlift",
+      "type": "strength",
+      "muscle": "hamstrings",
+      "equipment": "barbell",
+      "difficulty": "intermediate",
+      "instructions": "Stand with a barbell in front of you. Bend at your hips and knees to lower your body, keeping your back flat. Grab the barbell with an overhand grip. Lift the barbell by straightening your hips and knees."
+    },
+    {
+      "name": "Box Jumps",
+      "type": "power",
+      "muscle": "quadriceps",
+      "equipment": "box or bench",
+      "difficulty": "advanced",
+      "instructions": "Stand in front of a sturdy box or bench. Jump onto the box, landing with your knees slightly bent. Step back down and repeat the movement."
+    },
+    {
+      "name": "Calf Raises",
+      "type": "strength",
+      "muscle": "calves",
+      "equipment": "machine or step",
+      "difficulty": "beginner",
+      "instructions": "Stand with your feet hip-width apart. Lift your heels off the ground by pushing through the balls of your feet. Lower your heels back down in a controlled manner."
+    },
+    {
+      "name": "Hamstring Curl",
+      "type": "strength",
+      "muscle": "hamstrings",
+      "equipment": "machine",
+      "difficulty": "intermediate",
+      "instructions": "Lie face down on a leg curl machine, with your heels hooked under the padded lever. Curl your legs up towards your buttocks by bending at the knees. Lower your legs back down in a controlled manner."
+    },
+    {
+      "name": "Step-Ups",
+      "type": "strength",
+      "muscle": "quadriceps",
+      "equipment": "bench or step",
+      "difficulty": "intermediate",
+      "instructions": "Stand in front of a bench or step. Step up onto the platform with one foot, lifting your body up. Step back down and repeat on the other leg."
+    },
+    {
+      "name": "Romanian Deadlift",
+      "type": "strength",
+      "muscle": "hamstrings",
+      "equipment": "barbell or dumbbells",
+      "difficulty": "intermediate",
+      "instructions": "Hold a barbell in front of your thighs with an overhand grip or a pair of dumbbells in your hands. Hinge at your hips, keeping your back straight, and lower the weights toward the ground. Stand back up to the starting position."
+    },
+    {
+      "name": "Leg Extensions",
+      "type": "isolation",
+      "muscle": "quadriceps",
+      "equipment": "machine",
+      "difficulty": "beginner",
+      "instructions": "Sit on a leg extension machine with your knees bent at 90 degrees. Extend your legs to lift the padded bar, then lower it back down in a controlled manner."
     }
   ];
   
