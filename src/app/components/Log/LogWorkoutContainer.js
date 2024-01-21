@@ -5,12 +5,11 @@ import { LoadingSkeleton } from "../General/LoadingSkeleton";
 import { useRouter } from "next/navigation";
 import { PostInput } from "./PostInput";
 import { useUserContext } from "@/app/contexts/userContext";
+import styles from "@/app/style";
 
 export const LogWorkoutContainer = ({chosenExercises, setChosenExercises, chosenWorkout}) => {
   const router = useRouter();
   const {user, setUser} = useUserContext(); 
-  const [allExercises, setAllExercises] = useState([]);
-  const [isExerciseShowing, setIsExerciseShowing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLogLoading, setisLogLoading] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
@@ -22,20 +21,15 @@ export const LogWorkoutContainer = ({chosenExercises, setChosenExercises, chosen
   const [description, setDescription] = useState(null);
 
   useEffect(() => {
-    Promise.all([fetch("/api/exercises"), fetch("/api/checkLoggedWorkout")])
-      .then(([res, res2]) => {
-        return Promise.all([res.json(), res2.json()]);
+    Promise.all([fetch("/api/checkLoggedWorkout")])
+      .then(([res2]) => {
+        return Promise.all([res2.json()]);
       })
-      .then(([exerciseData, loggedWorkoutData]) => {
-        setAllExercises(exerciseData);
+      .then(([loggedWorkoutData]) => {
         setNumOfSessions(loggedWorkoutData.session_id + 1);
         setIsLoading(false);
       });
   }, []);
-
-  function handleAddExerciseButton(e) {
-    setIsExerciseShowing(!isExerciseShowing);
-  }
 
   const handleLogWorkout = async (e) => {
     setisLogLoading(true);
@@ -101,38 +95,22 @@ export const LogWorkoutContainer = ({chosenExercises, setChosenExercises, chosen
   if (isLoading) return <LoadingSkeleton />;
 
   return (
-    <div className=" my-7 mx-16">
-      <div className="flex items-center">
+    <div className="py-5">
+      <div className="flex items-center gap-4">
         <button
-          className="border p-1 rounded relative z-[100] "
-          onClick={handleAddExerciseButton}
-        >
-          Add Exercise
-          <>
-            {isExerciseShowing ? (
-              <ListOfExercises
-                allExercises={allExercises}
-                setChosenExercises={setChosenExercises}
-                setIsExerciseShowing={setIsExerciseShowing}
-                chosenExercises={chosenExercises}
-              />
-            ) : null}
-          </>
-        </button>
-        <button
-          className={`p-1 ml-4 rounded transition-[0.3s] bg-LightPurple text-platinum ${
+          className={`${styles.button} px-5 bg-LightPurple ${
             !chosenExercises.length ? "opacity-30" : null
           }`}
           onClick={handleLogWorkout}
           disabled={!chosenExercises.length}
         >
-          Log Workout
+          Log
         </button>
         <button
-          className="border border-DeepPurple p-1 ml-4 rounded bg-LightGreen text-platinum"
+          className={`${styles.button} px-5 bg-LightGreen`}
           onClick={handleShowPostDetails}
         >
-          Create a Post
+          Post
         </button>
         <p
           className={`ml-4 italic text-lg ${
@@ -150,16 +128,16 @@ export const LogWorkoutContainer = ({chosenExercises, setChosenExercises, chosen
       </div>
 
       {showPostDetails ? (
-        <div className={`flex mt-5 items-center`}>
+        <div className={`flex flex-col items-right my-3`}>
           <PostInput setTitle={setTitle} setDescription={setDescription} />
-          <button className={`border border-DeepPurple p-1 ml-4 rounded bg-LightGreen text-platinum ${!chosenExercises.length || !title || !description ? "opacity-30" : null}`} onClick={handlePostWorkout} disabled={!chosenExercises.length || !title || !description}>
+          <button className={`${styles.button} w-full mb-2 ${!chosenExercises.length || !title || !description ? "opacity-30" : null}`} onClick={handlePostWorkout} disabled={!chosenExercises.length || !title || !description}>
             Post
           </button>
-          <p className="text-Red italic ml-2">{!title || !description ? 'Please provide both a title and description' : null}</p>
+          <p className="text-Red italic">{!title || !description ? 'Please provide both a title and description' : null}</p>
         </div>
       ) : null}
 
-      <div className="z-1">
+      <div className="z-1 mt-5">
         <ChosenExercisesContainer
           setChosenExercises={setChosenExercises}
           chosenExercises={chosenExercises}

@@ -82,7 +82,7 @@ export const PostContainer = ({ post, isNotLastChild }) => {
   }
 
   return (
-    <div className="mb-5 min-w-[80%] max-w-[500px] ">
+    <div className="mb-5 w-full ">
       <div className="flex items-center mb-3">
         <div className="w-11 h-11 rounded-full overflow-hidden">
           <img src={postUser.image_url}></img>

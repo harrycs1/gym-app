@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useUserContext } from "@/app/contexts/userContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import styles from '../style'
 
 export default function Login() {
 
@@ -61,30 +62,43 @@ export default function Login() {
     }
     
     return (
-        <section className='min-h-screen flex justify-evenly flex-col items-center'>
-            <h1 className="pt-3 pb-2 font-extrabold text-3xl text-DeepPurple mb-3">Welcome to Gymie</h1>
-            <form className='text-DeepPurple flex flex-col justify-center items-center border p-4 rounded-2xl' onSubmit={handleSubmit}>
-                <label htmlFor="username" className='text-DeepPurple'>Username:</label>
-                <input type="text" value={username} name="username" id="username" className='text-black-200 mt-5 mb-5 p-2' onChange={handleUsername} placeholder='Username...' required/>
-                <label htmlFor="password" className='text-DeepPurple'>Password:</label>
-                <input type="password" value={password} name="password" id="password" className='text-black-200 mt-5 mb-5 p-2' onChange={handlePassword} placeholder='Password...' required/>
-                <button>Login</button>
-            </form>
-            <Link href={'/signup'}>
-                <h2 className="pt-3 pb-2 font-extrabold text-2xl text-DeepPurple mb-3">Sign Up</h2>
-            </Link>
-            <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+        <section className={`flex justify-center`}>
+            <div className={`${styles.bodySection}`}>
+                <div className='pt-10 flex justify-center'>
+                    <h1 className={`mb-5 ${styles.title}`}>Welcome Back.</h1>
+                </div>
+                <div className='bg-Lavender text-DeepPurple rounded-2xl flex justify-center py-10'>
+                    <form className='w-[80%] md:w-[50%] flex flex-col justify-center items-center gap-5' onSubmit={handleSubmit}>
+                        <div className='w-full'>
+                            <label htmlFor="username" className={`${styles.subtitle}`}>Username:</label>
+                            <input type="text" value={username} name="username" id="username" className={`sm:text-sm rounded-lg w-full p-2.5`} onChange={handleUsername} placeholder='Username...' required/>    
+                        </div>
+                        <div className='w-full mb-2'>
+                            <label htmlFor="password" className={`${styles.subtitle}`}>Password:</label>
+                            <input type="password" value={password} name="password" id="password" className={`sm:text-sm rounded-lg block w-full p-2.5`} onChange={handlePassword} placeholder='Password...' required/>
+                        </div>
+                        <button className='bg-platinum w-full text-DeepPurple hover:bg-opacity-70 font-bold rounded-lg text-xl px-5 py-2.5 text-center'>Login</button>
+                    </form>
+                </div>
+                <div className={`pt-10 flex flex-col items-center`}>
+                    <p className='text-DeepPurple mb-2'>Don't have an account?</p>
+                    <Link href={'/signup'} className="bg-Red px-4 py-2 rounded-xl">
+                        <button className={`font-bold text-xl text-white`}>Sign Up</button>
+                    </Link>
+                </div>
+                <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
+            </div>
         </section>
     )
 }

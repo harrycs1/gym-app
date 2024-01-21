@@ -9,7 +9,7 @@ export const WorkoutsDropDown = ({
   userWorkouts,
 }) => {
   return (
-    <div className="absolute border rounded-xl w-[60vh] overflow-auto -bottom-12 z-[1000] bg-platinum">
+    <div className="border rounded-xl w-full overflow-auto -bottom-12 z-[1000] mt-2 bg-platinum">
       {!userWorkouts.length ? (
         <>No Saved Workouts</>
       ) : (

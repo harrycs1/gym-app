@@ -3,7 +3,7 @@
 import { BrowseUsersContainer } from "../components/Browse/BrowseUsersContainer";
 import { BrowseWorkoutsContainer } from "../components/Browse/BrowseWorkoutsContainer";
 import { LoadingSkeleton } from "../components/General/LoadingSkeleton";
-import { Title } from "../components/General/Title";
+import styles from "../style";
 import { useEffect, useState } from "react";
 import { useUserContext } from "@/app/contexts/userContext";
 
@@ -33,34 +33,34 @@ export default function BrowsePage() {
   if (isLoading) {
     return <LoadingSkeleton />;
   }
-
+  
   return (
-    <main>
-      <Title text={"Browse"} />
-      <div className="flex p-1 ml-12 mb-5">
-        <p
-          className={`mr-5 hover:cursor-pointer p-1 rounded ${
-            showWorkouts ? "border font-bold" : null
-          }`}
-          onClick={handleShowContent}
-        >
-          Workouts
-        </p>
-        <p
-          onClick={handleShowContent}
-          className={`hover:cursor-pointer p-1 rounded ${
-            !showWorkouts ? "border font-bold" : null
-          }`}
-        >
-          Users
-        </p>
-      </div>
+    <main className={`flex justify-center`}>
+      <div className={`${styles.bodySection}`}>
+        <h1 className={`mb-5 ${styles.title}`}>Community</h1>
+        <div className="flex mb-5">
+          <p
+            className={`${styles.button} mr-5 ${showWorkouts ? "border-2 border-Lavender font-bold" : null}`}
+            onClick={handleShowContent}
+          >
+            Workouts
+          </p>
+          <p
+            onClick={handleShowContent}
+            className={`${styles.button} ${!showWorkouts ? "border-2 border-Lavender font-bold" : null}`}
+          >
+            Users
+          </p>
+        </div>
 
-      {showWorkouts ? (
-        <BrowseWorkoutsContainer workouts={workouts} />
-      ) : (
-        <BrowseUsersContainer users={users} />
-      )}
+        <div className="mb-10">
+          {showWorkouts ? (
+            <BrowseWorkoutsContainer workouts={workouts} />
+          ) : (
+            <BrowseUsersContainer users={users} />
+          )}
+        </div>
+      </div>
     </main>
   );
 }

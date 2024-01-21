@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/page": [
+    "/exercises/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/exercises/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -11,10 +11,16 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/exercises/page": [
+    "/browse/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/exercises/page.js"
+      "static/css/app/browse/page.css",
+      "static/chunks/app/browse/page.js"
+    ],
+    "/workouts/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/workouts/page.js"
     ],
     "/exercises/[exercises_id]/page": [
       "static/chunks/webpack.js",
@@ -33,16 +39,15 @@
       "static/css/app/signup/page.css",
       "static/chunks/app/signup/page.js"
     ],
-    "/workouts/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/workouts/page.js"
+      "static/chunks/app/page.js"
     ],
-    "/browse/page": [
+    "/workouts/[workout_id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/browse/page.css",
-      "static/chunks/app/browse/page.js"
+      "static/chunks/app/workouts/[workout_id]/page.js"
     ],
     "/profile/[username]/page": [
       "static/chunks/webpack.js",
@@ -53,11 +58,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/log-workout/page.js"
-    ],
-    "/workouts/[workout_id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workouts/[workout_id]/page.js"
     ]
   }
 }

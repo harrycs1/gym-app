@@ -16,7 +16,7 @@ export const WorkoutDropDown = ({
 
   return (
     <div
-      className={`p-2 bg-platinum transition-[0.15s] hover:cursor-pointer hover:bg-LightPurple hover:text-platinum text-left ${
+      className={`p-2 bg-platinum transition-[0.15s] hover:cursor-pointer hover:bg-Lavender text-left ${
         !isLast ? "border-b" : null
       }`}
       onClick={handlePickWorkout}

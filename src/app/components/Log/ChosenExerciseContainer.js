@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { SetsContainer } from "./SetsContainer";
+import styles from "@/app/style";
 
 export const ChosenExerciseContainer = ({
   exercise,
@@ -18,25 +19,6 @@ export const ChosenExerciseContainer = ({
     setWorkoutData(copyObject);
   }, [sets]);
 
-  function handleRemove(e) {
-    const index = chosenExercises.indexOf(exercise);
-    if (index !== -1) {
-      const amendedChosenExercises =
-        index === 0
-          ? [...chosenExercises.slice(1)]
-          : [
-              ...chosenExercises.slice(0, index),
-              ...chosenExercises.slice(index + 1),
-            ];
-
-      setChosenExercises(amendedChosenExercises);
-      
-      const copyObject = {...workoutData}
-      delete copyObject[exerciseId];
-      setWorkoutData(copyObject)
-    }
-  }
-
   return (
     <>
       <p className="font-bold">
@@ -45,16 +27,12 @@ export const ChosenExerciseContainer = ({
       <p className=" text-sm pl-2 pb-2">
         {exercise.difficulty} | {exercise.equipment}
       </p>
-      <p className="pl-2 pb-2">{exercise.instructions}</p>
+      <p className="pl-2 pb-2 hidden">{exercise.instructions}</p>
 
       <div className="flex items-center">
-        <SetsContainer sets={sets} setSets={setSets} />
-        <button
-          className="p-1 rounded border mr-2 ml-auto mt-auto bg-Red"
-          onClick={handleRemove}
-        >
-          Remove
-        </button>
+        <div className="w-full">
+          <SetsContainer sets={sets} setSets={setSets} />
+        </div>
       </div>
     </>
   );

@@ -58,8 +58,15 @@ export default function WorkoutsPage() {
 
       setTimeout(() => {
         setIsWorkoutError('')
-    }, 3000)
+      }, 3000)
     
+    } else if (!Object.keys(user).length) {
+      setIsWorkoutError('Not logged in.')
+      
+      setTimeout(() => {
+        setIsWorkoutError('')
+      }, 3000)
+
     } else {
       setWorkouts([...workouts, { creator_id: user.user_id, workout_name: workoutName, workout_id: 'temp'}])
 
@@ -96,9 +103,9 @@ export default function WorkoutsPage() {
   return (
     <section className={`flex justify-center`}>
       <div className={`${styles.bodySection}`}>
-      <h1 className={`${styles.title}`}>My Workouts</h1>
+      <h1 className={`mb-5 ${styles.title}`}>My Workouts</h1>
         <div className={`pt-5 pb-10 flex flex-col justify-start`}>
-          <div className=" w-full mb-5 text-center">
+          <div className="w-full mb-5 text-center">
             <ul>
             {isLoading ? <LoadingSkeleton/> : !workouts.length ? <p className="my-10 text-4xl pt-20 mt-10 text-LightPurple">Get started.</p> : null}
               {workouts.map((workout) => {
@@ -110,15 +117,17 @@ export default function WorkoutsPage() {
               })}
             </ul>
           </div>
-          {isDeleted ? <p>Workout deleted.</p>: null}
-          {isWorkoutError ? <p>{isWorkoutError}</p> : null}
+          <div className="w-full flex justify-center">
+            {isDeleted ? <p>Workout deleted.</p>: null}
+            {isWorkoutError ? <p>{isWorkoutError}</p> : null}
+          </div>
           <div className={` flex gap-4 w-full ${!workouts.length ? `justify-center` : `justify-start`}`}>
             <div>
               <Link href="/browse">
                 <button className={`${styles.button}`}>Browse</button>
               </Link>
             </div>
-            <div className={`rounded-lg p-3 mt-2 w-fit text-platinum bg-DeepPurple overflow-hidden flex-column`}>
+            <div className={`rounded-lg p-3 mt-2 w-fit text-platinum bg-DeepPurple overflow-hidden flex-column hover:bg-opacity-70`}>
               <button onClick={handleToggleForm}>Create</button>
               <form onSubmit={handleSubmitForm} className={`${inputIsHidden} flex mt-3 border rounded-xl overflow-hidden`}>
                 <input value={workoutName} onChange={handleNameInput} placeholder="Workout name" className="py-1 px-2 w-[80%] h-9 text-DeepPurple"></input>

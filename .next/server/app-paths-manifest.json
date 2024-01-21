@@ -1,15 +1,12 @@
 {
-  "/workouts/page": "app/workouts/page.js",
-  "/profile/[username]/page": "app/profile/[username]/page.js",
   "/login/page": "app/login/page.js",
-  "/workouts/[workout_id]/page": "app/workouts/[workout_id]/page.js",
+  "/workouts/page": "app/workouts/page.js",
   "/page": "app/page.js",
-  "/api/workouts/route": "app/api/workouts/route.js",
-  "/api/posts/route": "app/api/posts/route.js",
-  "/api/users/profile/[username]/route": "app/api/users/profile/[username]/route.js",
-  "/api/users/[id]/route": "app/api/users/[id]/route.js",
+  "/log-workout/page": "app/log-workout/page.js",
+  "/browse/page": "app/browse/page.js",
   "/api/loggedWorkouts/route": "app/api/loggedWorkouts/route.js",
+  "/api/posts/route": "app/api/posts/route.js",
   "/api/exercises/route": "app/api/exercises/route.js",
-  "/api/posts/[id]/comments/route": "app/api/posts/[id]/comments/route.js",
-  "/exercises/page": "app/exercises/page.js"
+  "/api/users/[id]/route": "app/api/users/[id]/route.js",
+  "/api/posts/[id]/comments/route": "app/api/posts/[id]/comments/route.js"
 }

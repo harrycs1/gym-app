@@ -1,3 +1,4 @@
+import styles from "@/app/style";
 import { SetContainer } from "./SetContainer";
 
 export const SetsContainer = ({ sets, setSets }) => {
@@ -13,25 +14,25 @@ export const SetsContainer = ({ sets, setSets }) => {
 
   return (
     <div className="flex flex-col">
-      {sets.map((set, index) => {
-        return (
-          <div key={index} className="grid grid-cols-4 mb-1 ">
-            <SetContainer
-              sets={sets}
-              setSets={setSets}
-              index={index}
-              handleDeleteSet={handleDeleteSet}
-            />
-          </div>
-        );
-      })}
-
       <div>
-        <button className="ml-5 border rounded p-1 w-24" onClick={handleAddSet}>
-          Add Set
-        </button>
+        {sets.map((set, index) => {
+          return (
+            <div key={index} className="">
+              <SetContainer
+                sets={sets}
+                setSets={setSets}
+                index={index}
+                handleDeleteSet={handleDeleteSet}
+              />
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="flex gap-4 mt-1">
+        <button className={`${styles.button} grow`} onClick={handleAddSet}>Add Set</button>
         <button
-          className={`ml-5 border rounded p-1 transition-[0.3s] z-[10] ${
+          className={`${styles.button} w-fit bg-Red ${
             sets.length === 1 ? "opacity-30" : null
           }`}
           onClick={handleDeleteSet}

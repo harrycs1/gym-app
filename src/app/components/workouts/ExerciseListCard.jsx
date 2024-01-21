@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { LoadingSkeleton } from "@/app/components/General/LoadingSkeleton";
-import { ErrorPage } from '../../components/General/ErrorPage'
 
 export default function ExerciseListCard ({ exercisesInWorkout, setExercisesInWorkout, workout_id, exercise }) {
     const [postWorkoutError, setPostWorkoutError] = useState(false);
@@ -69,9 +67,9 @@ export default function ExerciseListCard ({ exercisesInWorkout, setExercisesInWo
                 {postWorkoutError ? <p>Error adding exercise to workout. Please try again.</p> : null}
                 {getExerciseError ? <p>Error finding exercise. Please try again.</p>: null}
             </div>
-            <div className='h-full flex justify-center w-[20%]'>
+            <div className='h-full flex justify-end w-[20%]'>
                 <button onClick={handleAddToWorkout}>
-                    <img className="h-full max-h-20" src='/add.svg'></img>
+                    <img className="h-full max-h-20 hover:scale-110 transition ease-in-out" src='/add.svg'></img>
                 </button>
             </div>
         </section>

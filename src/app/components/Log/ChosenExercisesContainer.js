@@ -18,7 +18,7 @@ export const ChosenExercisesContainer = ({
         return (
           <div
             key={index}
-            className="border m-5 p-3 rounded-xl bg-LightPurple text-platinum"
+            className="mb-4 p-4 rounded-xl bg-Lavender text-DeepPurple"
           >
             <ChosenExerciseContainer
               exercise={exercise}

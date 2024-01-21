@@ -12,7 +12,7 @@ export const Header = () => {
         <img src="../Logo.png" className="w-14"></img>
       </Link>
       <div className="flex items-center">
-        <p className="text-platinum pr-4 italic">{user.username}</p>
+        <p className="text-platinum pr-4">{user.username}</p>
         {user.username ? (
           <div className="w-11 h-11 rounded-full overflow-hidden">
             <Link href={`/profile/${user.username}`}>

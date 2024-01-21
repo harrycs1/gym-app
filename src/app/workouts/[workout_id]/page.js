@@ -76,7 +76,7 @@ export default function Workout({ params }) {
                 <div className="flex text-md font-bold h-6 rounded-lg mb-5">
                     <Link href="/workouts" className="flex">
                         <img src="/caret-left.svg" className="h-full"></img>
-                        <p className="w-fit">All Workouts</p>
+                        <p className="w-fit">My Workouts</p>
                     </Link>
                 </div>
                 <ul>

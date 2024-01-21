@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Title } from "../components/General/Title";
 import { LogWorkoutContainer } from "../components/Log/LogWorkoutContainer";
 import { useUserContext } from "../contexts/userContext";
 import { useState, useEffect } from "react";
 import { WorkoutsDropDown } from "../components/Log/WorkoutsDropDown";
+import styles from "../style";
 
 export default function LogPage() {
   const { user, setUser } = useUserContext();
@@ -31,43 +31,44 @@ export default function LogPage() {
 
   if (!user.user_id)
     return (
-      <Link href="/login">
-        <div className="ml-20 mt-24 text-2xl hover:underline">
-          Click to Login
-        </div>
-      </Link>
-    );
-  return (
-    <>
-      <Title text={"Log Workout"} />
-      <div className="ml-8">
-        <button
-          onClick={handleShowWorkouts}
-          className="ml-5 border p-1 rounded relative"
-        >
-          {!chosenWorkout.workout_name ? "Choose a workout" : "Chosen Workout"}{" "}
-          {chosenWorkout.workout_name
-            ? `: ${chosenWorkout.workout_name}`
-            : null}
-          <>
-            {showWorkouts ? (
-              <WorkoutsDropDown
+      <section className={`flex justify-center`}>
+        <div className={`${styles.bodySection}`}>
+            <h1 className={`mb-5 ${styles.title}`}>My Workouts</h1>
+            <Link href="/login">
+              <button className={`${styles.button}`}>Login</button>
+            </Link>
+          </div>
+        </section>
+      );
+
+    return (
+      <main className={`flex justify-center`}>
+        <div className={`${styles.bodySection}`}>
+          <h1 className={`mb-5 ${styles.title}`}>Log Workout</h1>
+          <div className="mb-10">
+            <button onClick={handleShowWorkouts} className="border p-1 rounded relative">
+              {!chosenWorkout.workout_name ? "Choose a workout" : ""}{" "}
+              {chosenWorkout.workout_name ? `${chosenWorkout.workout_name}` : null}
+            </button>
+            <div className="">
+                {showWorkouts ? (
+                  <WorkoutsDropDown
+                    setChosenExercises={setChosenExercises}
+                    setChosenWorkout={setChosenWorkout}
+                    chosenWorkout={chosenWorkout}
+                    userWorkouts={userWorkouts}
+                  />
+                ) : null}
+            </div>
+            {chosenWorkout.workout_name ? (
+              <LogWorkoutContainer
+                chosenExercises={chosenExercises}
                 setChosenExercises={setChosenExercises}
-                setChosenWorkout={setChosenWorkout}
                 chosenWorkout={chosenWorkout}
-                userWorkouts={userWorkouts}
               />
             ) : null}
-          </>
-        </button>
-        {chosenWorkout.workout_name ? (
-          <LogWorkoutContainer
-            chosenExercises={chosenExercises}
-            setChosenExercises={setChosenExercises}
-            chosenWorkout={chosenWorkout}
-          />
-        ) : null}
-      </div>
-    </>
+          </div>
+        </div>
+    </main>
   );
 }
