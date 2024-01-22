@@ -51,14 +51,16 @@ export default function ProfilePage({params}) {
   return (
     <main className={`flex justify-center`}>
       <div className={`${styles.bodySection}`}>
-        <div className="flex w-full justify-between items-end pr-16">
+        <div className="flex w-full justify-between items-end">
           <div className="h-fit flex items-end gap-3">
             <h1 className={`h-fit ${styles.title}`}>{profileUser.username}</h1>
             <div className="h-12">
               <img src={profileUser.image_url} className="h-full"></img>
             </div>
           </div>
-          {user.username === profileUser.username ? <button className="border rounded-lg p-2" onClick={handleLogout}>Logout</button>:null}
+          <div className="">
+            {user.username === profileUser.username ? <button className={`${styles.button} bg-Pink`} onClick={handleLogout}>Logout</button>:null}
+          </div>
         </div>
         <div className="pt-4 mb-10 md:columns-2 gap-10">
           <div className="w-full break-inside-avoid mb-10">

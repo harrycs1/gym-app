@@ -46,7 +46,7 @@ export default function LogPage() {
         <div className={`${styles.bodySection}`}>
           <h1 className={`mb-5 ${styles.title}`}>Log Workout</h1>
           <div className="mb-10">
-            <button onClick={handleShowWorkouts} className="border p-1 rounded relative">
+            <button onClick={handleShowWorkouts} className={`${styles.button}`}>
               {!chosenWorkout.workout_name ? "Choose a workout" : ""}{" "}
               {chosenWorkout.workout_name ? `${chosenWorkout.workout_name}` : null}
             </button>

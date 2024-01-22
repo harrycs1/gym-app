@@ -13,6 +13,7 @@ export default function SingleExercisePage({params}) {
 
     const { user, setUser } = useUserContext();
     
+    // console.log(currentExerciseData)
 
     const exercise_id = params.exercises_id;
 
@@ -33,8 +34,8 @@ export default function SingleExercisePage({params}) {
                 return res.json()
             })
             .then((data)=>{
-                console.log(data)
-                setCurrentExerciseData(data)
+                const sortedData = data.sort((a, b) => a.logged_id - b.logged_id).reverse()
+                setCurrentExerciseData(sortedData)
             })
         }
 
